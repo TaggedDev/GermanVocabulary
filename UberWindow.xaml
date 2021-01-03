@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Übersetzung" Height="550" Width="400" ResizeMode="NoResize">
-    <Grid x:Name="Window" Margin="0,0,2,-1" Height="520" KeyDown="PressedBTN" KeyUp="ReleasedBTN">
+        Title="Übersetzung" Height="550" Width="400" ResizeMode="NoResize" Background="{x:Null}">
+    <Grid x:Name="Window" KeyDown="PressedBTN" KeyUp="ReleasedBTN">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF0E3D64" Offset="0"/>
-                <GradientStop Color="#FF163C8D" Offset="1"/>
+                <GradientStop Color="#FFBFBFBF" Offset="1"/>
+                <GradientStop Color="#FFC9C9C9" Offset="0.157"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
@@ -21,25 +21,26 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="132*"/>
+            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition Width="131*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.ColumnSpan="3" Margin="27,10,32,62">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF174274" Offset="0"/>
-                    <GradientStop Color="#FF0E438D" Offset="1"/>
-                    <GradientStop Color="#FF1B4295" Offset="0.53"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <TextBox x:Name="userInput" Grid.ColumnSpan="3" Text="{Binding textFieldContent}" HorizontalAlignment="Left" Height="42" Margin="32,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="331"  FontFamily="Segoe UI Black" FontSize="30"/>
-        <Label Content="Translate the word: word" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.711,-0.038" Grid.ColumnSpan="3" Background="#00000000" Height="32" Width="331" FontSize="18" Foreground="White"/>
-        <Button x:Name="btn_a_umlaut" Content="ä" HorizontalAlignment="Left" Margin="80,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="50" Height="30" Click="OnAUmlautClick"/>
-        <Button x:Name="btn_o_umlaut" Content="ö" HorizontalAlignment="Left" Margin="70,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="50" Height="30" Grid.Column="1" Click="OnOUmlautClick"/>
-        <Button x:Name="btn_u_umlaut" Content="ü" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="50" Height="30" Grid.Column="1" Click="OnUUmlautClick"/>
-        <Button x:Name="btn_escet" Content="ß" HorizontalAlignment="Left" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="50" Height="30" Grid.Column="2" Click="OnEscetClick"/>
-        <Button Grid.ColumnSpan="3" Content="SUBMIT" HorizontalAlignment="Left" Margin="77,43,0,0" Grid.Row="3" VerticalAlignment="Top" Width="248" Height="51" FontSize="22" FontWeight="Bold" Background="White" Foreground="#FF92FF0F" BorderBrush="Black"/>
+        <TextBox x:Name="userInput" Grid.ColumnSpan="3" Text="{Binding textFieldContent}" HorizontalAlignment="Left" Height="42" Margin="29,35,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="331"  FontFamily="Segoe UI Black" FontSize="30"/>
+        <Label x:Name="Title" HorizontalAlignment="Center" Content="Translate the word" Margin="90,42,89,0" VerticalAlignment="Top" RenderTransformOrigin="0.711,-0.448" Grid.ColumnSpan="3" Background="#00000000" Height="37" Width="215" FontSize="22" Foreground="#FF4B4B4B" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+        <Button x:Name="btn_a_umlaut" Content="ä" HorizontalAlignment="Left" Margin="78,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" Click="OnAUmlautClick" FontSize="22"/>
+        <Button x:Name="btn_o_umlaut" Content="ö" HorizontalAlignment="Left" Margin="69,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" Grid.Column="1" Click="OnOUmlautClick" FontSize="22"/>
+        <Button x:Name="btn_u_umlaut" Content="ü" HorizontalAlignment="Left" Margin="9,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" Grid.Column="1" Click="OnUUmlautClick" FontSize="22"/>
+        <Button x:Name="btn_escet" Content="ß" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" Grid.Column="2" Click="OnEscetClick" FontSize="22"/>
+        <Border CornerRadius="10" BorderBrush="#FF225F00" BorderThickness="5" Grid.ColumnSpan="3" Margin="80,94,81,53" Grid.Row="3" Background="#FF7AE032" Grid.RowSpan="2"/>
+        <Button Grid.ColumnSpan="3" Content="SUBMIT" HorizontalAlignment="Left" Margin="91,0,0,0" Grid.Row="4" VerticalAlignment="Top" Width="209" Height="39" FontSize="22" FontWeight="Bold" Background="{x:Null}" Foreground="White" Click="SubmitWord" BorderBrush="{x:Null}"/>
+        <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="394" Grid.ColumnSpan="3" Background="#FFA4A4A4">
+            <MenuItem Header="Themen">
+                <MenuItem Header="Das Essen"/>
+                <MenuItem Header="Die Kleidung"/>
+            </MenuItem>
+        </Menu>
+        <Rectangle Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="3" Margin="29,79,0,0" VerticalAlignment="Top" Width="331" Fill="#FFF1F1F1"/>
+        <Rectangle HorizontalAlignment="Left" Height="3" Margin="91,44,0,0" VerticalAlignment="Top" Width="209" Fill="#FF1C638B" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <TextBlock x:Name="translateWord" HorizontalAlignment="Center" Margin="21,19,25,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85" Height="25" FontSize="18" FontWeight="Bold" Grid.Column="1"/>
     </Grid>
 </Window>

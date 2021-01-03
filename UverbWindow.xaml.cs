@@ -15,65 +15,68 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Логика взаимодействия для UberWindow.xaml
+    /// Логика взаимодействия для UverbWindow.xaml
     /// </summary>
-    public partial class UberWindow : Window
+    public partial class UverbWindow : Window
     {
-        AppContext db;
-        public UberWindow()
+        TextBox lastUserInput;
+        byte index;
+        Dictionary<TextBox, byte> fields;
+        public UverbWindow()
         {
             InitializeComponent();
-            DataContext = this;
-            db = new AppContext();
+            ichInput.Focus();
         }
+       
 
+
+
+        private bool IsShift { get; set; }
         
-        private bool IsShift { get; set; } 
 
         private void OnAUmlautClick(object sender, RoutedEventArgs e)
         {
             if (IsShift)
             {
-                userInput.Text += "Ä";
-            } else {
-                userInput.Text += "ä";
+                lastUserInput.Text += "Ä";
             }
-            
-        }
+            else
+            {
+                lastUserInput.Text += "ä";
+            }
 
+        }
         private void OnOUmlautClick(object sender, RoutedEventArgs e)
         {
             if (IsShift)
             {
-                userInput.Text += "Ö";
+                lastUserInput.Text += "Ö";
             }
             else
             {
-                userInput.Text += "ö";
+                lastUserInput.Text += "ö";
             }
         }
-
         private void OnUUmlautClick(object sender, RoutedEventArgs e)
         {
             if (IsShift)
             {
-                userInput.Text += "Ü";
+                lastUserInput.Text += "Ü";
             }
             else
             {
-                userInput.Text += "ü";
+                lastUserInput.Text += "ü";
             }
         }
-
         private void OnEscetClick(object sender, RoutedEventArgs e)
         {
             if (IsShift)
             {
-                userInput.Text += "ẞ";
+                lastUserInput.Text += "ẞ";
             }
             else
             {
-                userInput.Text += "ß";
+                lastUserInput.Text += "ß";
             }
         }
 
@@ -88,7 +91,6 @@ namespace WpfApp1
                 IsShift = true;
             }
         }
-
         private void ReleasedBTN(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
@@ -101,9 +103,8 @@ namespace WpfApp1
             }
         }
 
-        private void SubmitWord(object sender, RoutedEventArgs e)
+        private void OnUserClick(object sender, MouseButtonEventArgs e)
         {
-
         }
     }
 }

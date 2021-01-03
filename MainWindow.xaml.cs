@@ -31,5 +31,16 @@ namespace WpfApp1
             uWin.ShowDialog();
 
         }
+
+        private void OnExit(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void OnUverbClick(object sender, RoutedEventArgs e)
+        {
+            UverbWindow uvWin = new UverbWindow();
+            uvWin.ShowDialog();
+        }
     }
 }

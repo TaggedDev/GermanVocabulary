@@ -19,14 +19,14 @@
             <ColumnDefinition Width="100*"/>
             <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1" Click="OnUberClick"/>
-        <Button Grid.Column="1" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
-        <Button Grid.Column="2" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
+        <Button x:Name="UberBTN" Grid.Column="0" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1" Click="OnUberClick"/>
+        <Button x:Name="uverben" Grid.Column="1" Grid.Row="0" Content="U. Verben"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1" Click="OnUverbClick"/>
+        <Button x:Name="modalverb" Grid.Column="2" Grid.Row="0" Content="Modalverben"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
         <Button Grid.Column="3" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
         <Button Grid.Column="4" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
         <Button Grid.Column="5" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
         <Button Grid.Column="6" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
         <Button Grid.ColumnSpan="2" Content="Add words" HorizontalAlignment="Left" Height="60" Margin="5,298,0,-258" VerticalAlignment="Top" Width="171"/>
-        <Button Content="Exit" Grid.Column="6" HorizontalAlignment="Left" Height="30" Margin="5,328,0,-258" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Exit" Grid.Column="6" HorizontalAlignment="Left" Height="30" Margin="5,328,0,-258" VerticalAlignment="Top" Width="90" Click="OnExit"/>
     </Grid>
 </Window>

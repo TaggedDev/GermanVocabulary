@@ -1,0 +1,58 @@
+﻿<Window x:Class="WpfApp1.UverbWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="UverbWindow" Height="450" Width="570.93">
+    <Grid HorizontalAlignment="Left" Width="561" MouseDown="OnUserClick" KeyDown="PressedBTN" KeyUp="ReleasedBTN">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="wordBlock" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Translate word: " VerticalAlignment="Top" Height="38" Width="183" Margin="2,2,0,0" FontSize="16" FontFamily="Segoe UI Semibold" TextDecorations="{x:Null}"/>
+        <Border x:Name="cb_ichInput" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="32" Grid.Row="2" VerticalAlignment="Top" Width="177" Margin="5">
+            <TextBox x:Name="ichInput"  TextWrapping="Wrap" Text="1" FontSize="20" FontFamily="Segoe UI Semibold" Margin="0,-1,-1,0" BorderBrush="{x:Null}"/>
+        </Border>
+        <Border x:Name="cb_duInput" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="32" Grid.Row="3" VerticalAlignment="Top" Width="177" Margin="5">
+            <TextBox x:Name="duInput" TextWrapping="Wrap" Text="2" FontSize="20" FontFamily="Segoe UI Semibold" Margin="0,-1,-1,0" BorderBrush="{x:Null}"/>
+        </Border>
+        <Border x:Name="cb_erInput" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="32" Grid.Row="4" VerticalAlignment="Top" Width="177" Margin="5">
+            <TextBox x:Name="erInput"  TextWrapping="Wrap" Text="3" FontSize="20" FontFamily="Segoe UI Semibold" BorderBrush="{x:Null}"/>
+        </Border>
+        <Border x:Name="cb_wirInput" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="32" Grid.Row="5" VerticalAlignment="Top" Width="177" Margin="5">
+            <TextBox x:Name="wirInput"  TextWrapping="Wrap" Text="4" FontSize="20" FontFamily="Segoe UI Semibold" BorderBrush="{x:Null}"/>
+        </Border>
+        <Border x:Name="cb_ihrInput" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="32" Grid.Row="6" VerticalAlignment="Top" Width="177" Margin="5">
+            <TextBox x:Name="ihrInput" TextWrapping="Wrap" Text="5" FontSize="20" FontFamily="Segoe UI Semibold" BorderBrush="{x:Null}"/>
+        </Border>
+        <Border x:Name="cb_sieInput" BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="32" Grid.Row="7" VerticalAlignment="Top" Width="177" Margin="5">
+            <TextBox x:Name="sieInput" TextWrapping="Wrap" Text="6" FontSize="20" FontFamily="Segoe UI Semibold" BorderBrush="{x:Null}"/>
+        </Border>
+        <Label Content="Ich" HorizontalAlignment="Left" Margin="150,5,0,0" Grid.Row="2" Width="32" Height="32" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Du" HorizontalAlignment="Left" Margin="150,5,0,0" Grid.Row="3" Width="32" Height="32" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Er/Sie/Es" HorizontalAlignment="Left" Margin="102,5,0,0" Grid.Row="4" Width="80" Height="32" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Wir" HorizontalAlignment="Left" Margin="143,5,0,0" Grid.Row="5" Width="39" Height="32" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Ihr" HorizontalAlignment="Left" Margin="150,5,0,0" Grid.Row="6" Width="32" Height="32" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Sie" HorizontalAlignment="Left" Margin="148,5,0,0" Grid.Row="7" Width="34" Height="32" VerticalAlignment="Top" FontSize="18"/>
+        <Button x:Name="btn_a_umlaut" Content="ä" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="8" VerticalAlignment="Top" Width="35" Height="35"/>
+        <Button x:Name="btn_u_umlaut" Content="ü" Grid.Column="1" HorizontalAlignment="Left" Margin="54,4,0,0" Grid.Row="8" VerticalAlignment="Top" Width="35" Height="35"/>
+        <Button x:Name="btn_o_umlaut" Content="ö" Grid.Column="1" HorizontalAlignment="Left" Margin="99,4,0,0" Grid.Row="8" VerticalAlignment="Top" Width="35" Height="35"/>
+        <Button x:Name="btn_escet" Content="ß" Grid.Column="1" HorizontalAlignment="Left" Margin="142,4,0,0" Grid.Row="8" VerticalAlignment="Top" Width="35" Height="35"/>
+        <Button Content="Submit" Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="42,7,0,0" Grid.Row="8" VerticalAlignment="Top" Width="102" HorizontalContentAlignment="Center"/>
+    </Grid>
+</Window>
