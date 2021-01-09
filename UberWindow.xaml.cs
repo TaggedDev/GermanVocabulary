@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,17 +20,47 @@ namespace WpfApp1
     /// </summary>
     public partial class UberWindow : Window
     {
-        AppContext db;
+
+        private int id; // Рандомный айдишник, который генерируется для выбора случайной пары слов из словаря words
+        private string[,] words = {
+                { " Client", "Der Kunde"},
+                { " New", "Die Nachricht"},
+                { " To like smth", "Gefallen"},
+                { " Public", "Gemeinsam"},
+                { " Waiter", "Der Kellner"},
+                { " Bag (package)", "Die Tüte"},
+                { " Coat", "Der Mantel"},
+                { " To show", "Zeigen"},
+                { " To belong", "Empfangen"},
+                { " Different", "Verschieden"},
+                { " To tell", "Erzählen"},
+                { " Candle", "Die Kerze"},
+                { " Special", "Speziell"},
+                { " Plate", "Der Teller"},
+                { " Notebook (paper)", "Das Heft"},
+                { " Notebook (paper)", "Das Heft"}
+            };
+
+        // init
         public UberWindow()
         {
             InitializeComponent();
             DataContext = this;
-            db = new AppContext();
+            id = randomId();
+            englishInput.Text = words[id, 0];
+        }
+        
+        // Фун-ия randomId в возвращает случайное значение от 0 до 16.
+        private int randomId() 
+        {
+            Random rnd = new Random();
+            return rnd.Next(0, 16);
         }
 
-        
-        private bool IsShift { get; set; } 
+        // Булевская переменная, которая хранит в себе 0/1 в зависимости от того, нажат ли шифт или нет
+        private bool IsShift { get; set; }
 
+        // Функции OnAUmlautClick, OnOUmlautClick, OnUUmlautClick, OnEscetClick при нажатии добавляют в строку букву алфавита
         private void OnAUmlautClick(object sender, RoutedEventArgs e)
         {
             if (IsShift)
@@ -40,7 +71,6 @@ namespace WpfApp1
             }
             
         }
-
         private void OnOUmlautClick(object sender, RoutedEventArgs e)
         {
             if (IsShift)
@@ -52,7 +82,6 @@ namespace WpfApp1
                 userInput.Text += "ö";
             }
         }
-
         private void OnUUmlautClick(object sender, RoutedEventArgs e)
         {
             if (IsShift)
@@ -64,7 +93,6 @@ namespace WpfApp1
                 userInput.Text += "ü";
             }
         }
-
         private void OnEscetClick(object sender, RoutedEventArgs e)
         {
             if (IsShift)
@@ -77,6 +105,7 @@ namespace WpfApp1
             }
         }
 
+        // Функции PressedBTN и ReleasedBTN отвечают за изменение текста кнопки по нажатию клавиши shift
         private void PressedBTN(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
@@ -88,7 +117,6 @@ namespace WpfApp1
                 IsShift = true;
             }
         }
-
         private void ReleasedBTN(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
@@ -101,9 +129,37 @@ namespace WpfApp1
             }
         }
 
+        // Функции SubmitWord и OnEnterPressed вызывают функцию SubmitProcess
         private void SubmitWord(object sender, RoutedEventArgs e)
         {
-
+            SubmitProcess();
         }
+        private void OnEnterPressed(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SubmitProcess();
+            }
+        }
+
+        // Функция SubmitProcess вызывает проверку слова со словарём
+        private void SubmitProcess()
+        {
+            string originalTranslation, userTranslation;
+            originalTranslation = words[id, 1];
+            userTranslation = userInput.Text;
+
+            if (originalTranslation == userTranslation)
+            {
+                id = randomId();
+                englishInput.Text = words[id, 0];
+                userInput.Clear();
+            }
+            else
+            {
+                userInput.Text = "Bruh.";
+            }
+        }
+
     }
 }

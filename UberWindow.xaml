@@ -6,13 +6,38 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="Übersetzung" Height="550" Width="400" ResizeMode="NoResize" Background="{x:Null}">
-    <Grid x:Name="Window" KeyDown="PressedBTN" KeyUp="ReleasedBTN">
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFBFBFBF" Offset="1"/>
-                <GradientStop Color="#FFC9C9C9" Offset="0.157"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Window.Resources>
+        <Style x:Key="UmlautButtons" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#F7F7F7"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="#E5E5E5" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="4,4,4,2"></ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="0,0,0,0"></ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="Window" KeyDown="PressedBTN" KeyUp="ReleasedBTN" Background="#FFEBEBEB">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -26,21 +51,36 @@
             <ColumnDefinition Width="131*"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="userInput" Grid.ColumnSpan="3" Text="{Binding textFieldContent}" HorizontalAlignment="Left" Height="42" Margin="29,35,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="331"  FontFamily="Segoe UI Black" FontSize="30"/>
-        <Label x:Name="Title" HorizontalAlignment="Center" Content="Translate the word" Margin="90,42,89,0" VerticalAlignment="Top" RenderTransformOrigin="0.711,-0.448" Grid.ColumnSpan="3" Background="#00000000" Height="37" Width="215" FontSize="22" Foreground="#FF4B4B4B" FontWeight="Bold" FontFamily="Segoe UI Black"/>
-        <Button x:Name="btn_a_umlaut" Content="ä" HorizontalAlignment="Left" Margin="78,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" Click="OnAUmlautClick" FontSize="22"/>
-        <Button x:Name="btn_o_umlaut" Content="ö" HorizontalAlignment="Left" Margin="69,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" Grid.Column="1" Click="OnOUmlautClick" FontSize="22"/>
-        <Button x:Name="btn_u_umlaut" Content="ü" HorizontalAlignment="Left" Margin="9,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" Grid.Column="1" Click="OnUUmlautClick" FontSize="22"/>
-        <Button x:Name="btn_escet" Content="ß" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" Grid.Column="2" Click="OnEscetClick" FontSize="22"/>
+        <Label x:Name="Title" HorizontalAlignment="Center" Content="Translate the word" Margin="42,33,44,0" VerticalAlignment="Top" RenderTransformOrigin="0.711,-0.448" Grid.ColumnSpan="3" Background="#00000000" Height="46" Width="308" FontSize="32" Foreground="#FF4B4B4B" FontWeight="Bold" FontFamily="Segoe UI Black"/>
+        
+        <Border BorderThickness="3" BorderBrush="#D2D2D2" Background="#FAFAFA" HorizontalAlignment="Left" Margin="78,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" CornerRadius="5">
+            <Button x:Name="btn_a_umlaut" Style="{StaticResource UmlautButtons}" Foreground="Gray" Content="ä" FontSize="22" Background="#FFFAFAFA" Click="OnAUmlautClick"></Button>
+        </Border>
+
+        <Border BorderThickness="3" BorderBrush="#D2D2D2" Background="#FAFAFA" HorizontalAlignment="Left" Margin="69,0,0,0" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" CornerRadius="5">
+            <Button x:Name="btn_o_umlaut" Style="{StaticResource UmlautButtons}" Foreground="Gray" Content="ö" FontSize="22" Background="#FFFAFAFA" Click="OnOUmlautClick"></Button>
+        </Border>
+
+        <Border BorderThickness="3" BorderBrush="#D2D2D2" Background="#FAFAFA" HorizontalAlignment="Left" Margin="9,0,0,0" Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" CornerRadius="5">
+            <Button x:Name="btn_u_umlaut" Style="{StaticResource UmlautButtons}" Foreground="Gray" Content="ü" FontSize="22" Background="#FFFAFAFA" Click="OnUUmlautClick"></Button>
+        </Border>
+
+        <Border BorderThickness="3" BorderBrush="#D2D2D2" Background="#FAFAFA" HorizontalAlignment="Left"  Grid.Column="2" Grid.Row="3" VerticalAlignment="Top" Width="50" Height="40" CornerRadius="5">
+            <Button x:Name="btn_escet" Style="{StaticResource UmlautButtons}" Foreground="Gray" Content="ß" FontSize="22" Background="#FFFAFAFA" Click="OnEscetClick"></Button>
+        </Border>
+
+        
+        
         <Border CornerRadius="10" BorderBrush="#FF225F00" BorderThickness="5" Grid.ColumnSpan="3" Margin="80,94,81,53" Grid.Row="3" Background="#FF7AE032" Grid.RowSpan="2"/>
-        <Button Grid.ColumnSpan="3" Content="SUBMIT" HorizontalAlignment="Left" Margin="91,0,0,0" Grid.Row="4" VerticalAlignment="Top" Width="209" Height="39" FontSize="22" FontWeight="Bold" Background="{x:Null}" Foreground="White" Click="SubmitWord" BorderBrush="{x:Null}"/>
+        <Button x:Name="BTN_Submit" Grid.ColumnSpan="3" Content="SUBMIT" HorizontalAlignment="Left" Margin="91,0,0,0" Grid.Row="4" VerticalAlignment="Top" Width="209" Height="39" FontSize="22" FontWeight="Bold" Background="{x:Null}" Foreground="White" Click="SubmitWord" BorderBrush="{x:Null}" KeyDown="OnEnterPressed"/>
         <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="394" Grid.ColumnSpan="3" Background="#FFA4A4A4">
             <MenuItem Header="Themen">
                 <MenuItem Header="Das Essen"/>
                 <MenuItem Header="Die Kleidung"/>
             </MenuItem>
         </Menu>
-        <Rectangle Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="3" Margin="29,79,0,0" VerticalAlignment="Top" Width="331" Fill="#FFF1F1F1"/>
-        <Rectangle HorizontalAlignment="Left" Height="3" Margin="91,44,0,0" VerticalAlignment="Top" Width="209" Fill="#FF1C638B" Grid.Row="1" Grid.ColumnSpan="3"/>
-        <TextBlock x:Name="translateWord" HorizontalAlignment="Center" Margin="21,19,25,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85" Height="25" FontSize="18" FontWeight="Bold" Grid.Column="1"/>
+        <Rectangle Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="3" Margin="42,79,0,0" VerticalAlignment="Top" Width="308" Fill="#FFA2A2A2"/>
+        <Rectangle HorizontalAlignment="Left" Height="3" Margin="29,44,0,0" VerticalAlignment="Top" Width="331" Fill="#FF1C638B" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <TextBlock x:Name="englishInput" HorizontalAlignment="Center" Margin="42,10,44,0" Grid.Row="1" TextWrapping="Wrap" Text="sdsdsd" VerticalAlignment="Top" Width="308" Height="34" FontSize="24" FontWeight="Bold" Grid.ColumnSpan="3" FontFamily="Segoe UI Historic"/>
     </Grid>
 </Window>
