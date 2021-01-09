@@ -105,9 +105,16 @@ namespace WpfApp1
             }
         }
 
-        // Функции PressedBTN и ReleasedBTN отвечают за изменение текста кнопки по нажатию клавиши shift
+        // Функции PressedBTN и ReleasedBTN отвечают за нажатие кнопок на клавиатуре
         private void PressedBTN(object sender, KeyEventArgs e)
         {
+            // Проверка слово по клавише Enter
+            if (e.Key == Key.Enter)
+            {
+                SubmitProcess();
+            }
+
+            // Увеличение регистра букв как текста на кнопках
             if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
             {
                 btn_a_umlaut.Content = "Ä";
@@ -119,6 +126,7 @@ namespace WpfApp1
         }
         private void ReleasedBTN(object sender, KeyEventArgs e)
         {
+            // Уменьшение регистра букв как текста на кнопках
             if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
             {
                 btn_a_umlaut.Content = "ä";
@@ -133,13 +141,6 @@ namespace WpfApp1
         private void SubmitWord(object sender, RoutedEventArgs e)
         {
             SubmitProcess();
-        }
-        private void OnEnterPressed(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                SubmitProcess();
-            }
         }
 
         // Функция SubmitProcess вызывает проверку слова со словарём

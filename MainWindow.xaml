@@ -5,7 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="#FFF0F2F2">
+    <Window.Resources>
+        <Style x:Key="MenuButtons" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#B4D9D5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="5" BorderBrush="#58A69E" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid HorizontalAlignment="Left" Height="100" Margin="50,25,0,0" VerticalAlignment="Top" Width="700" >
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,14 +34,31 @@
             <ColumnDefinition Width="100*"/>
             <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="UberBTN" Grid.Column="0" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1" Click="OnUberClick"/>
-        <Button x:Name="uverben" Grid.Column="1" Grid.Row="0" Content="U. Verben"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1" Click="OnUverbClick"/>
-        <Button x:Name="modalverb" Grid.Column="2" Grid.Row="0" Content="Modalverben"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
-        <Button Grid.Column="3" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
-        <Button Grid.Column="4" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
-        <Button Grid.Column="5" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
-        <Button Grid.Column="6" Grid.Row="0" Content="Übersetzung"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1"/>
-        <Button Grid.ColumnSpan="2" Content="Add words" HorizontalAlignment="Left" Height="60" Margin="5,298,0,-258" VerticalAlignment="Top" Width="171"/>
-        <Button Content="Exit" Grid.Column="6" HorizontalAlignment="Left" Height="30" Margin="5,328,0,-258" VerticalAlignment="Top" Width="90" Click="OnExit"/>
+
+        <Border Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1">
+            <Button Style="{StaticResource MenuButtons}" x:Name="UberBTN" Content="Übersetzung" Click="OnUberClick"/>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="0"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1">
+            <Button Style="{StaticResource MenuButtons}" x:Name="uverben" Content="U. Verben" Click="OnUverbClick"/>
+        </Border>
+        <Border Grid.Column="2" Grid.Row="0" Margin="5,5,5,5" Height="90" Width="90" Grid.ColumnSpan="1" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" >
+            <Button Style="{StaticResource MenuButtons}" x:Name="modalverb"  Content="Modalverben"    />
+        </Border>
+        <Border Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1">
+            <Button Style="{StaticResource MenuButtons}"  Content="Übersetzung"  />
+        </Border>
+        <Border Grid.Column="4" Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1">
+            <Button Style="{StaticResource MenuButtons}"  Content="Übersetzung" />
+        </Border>
+        <Border Grid.Column="5" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,5,5" Height="90" Width="90" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1">
+            <Button Style="{StaticResource MenuButtons}"  Content="Übersetzung" />
+        </Border>
+        <Border Grid.Column="6" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="90" Grid.ColumnSpan="1" Margin="5,5,0,0" RenderTransformOrigin="0.5,0.5">
+            <Button Style="{StaticResource MenuButtons}"  Content="Übersetzung"  />
+        </Border>
+
+        <Button Style="{StaticResource MenuButtons}" Grid.ColumnSpan="2" Content="Add words" HorizontalAlignment="Left" Height="60" Margin="5,298,0,-258" VerticalAlignment="Top" Width="171"/>
+        <Button Style="{StaticResource MenuButtons}" Content="Exit" Grid.Column="6" HorizontalAlignment="Left" Height="45" Margin="5,313,0,-258" VerticalAlignment="Top" Width="90" Click="OnExit"/>
+
     </Grid>
 </Window>
